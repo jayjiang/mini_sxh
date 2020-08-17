@@ -50,8 +50,8 @@ function getShowUrl($v)
 
 /***
  * 处理数据（把列表中需要处理的字段转换成数组和对应的值,用于自定义标签文件中）
- * @param $list      列表
- * @param $moduleid  模型ID
+ * @param array $list      列表
+ * @param int $moduleid  模型ID
  * @return array
  */
 function changeFields($list, $moduleid)
@@ -68,8 +68,8 @@ function changeFields($list, $moduleid)
 
 /***
  * 处理数据（用于详情页中数据转换）
- * @param $info      内容详情
- * @param $moduleid  模型ID
+ * @param mixed $info      内容详情
+ * @param int $moduleid  模型ID
  * @return array
  */
 function changefield($info, $moduleId)
@@ -116,7 +116,7 @@ function changefield($info, $moduleId)
 
 /**
  * 邮件发送
- * @param $to    接收人
+ * @param string $to    接收人
  * @param string $subject 邮件标题
  * @param string $content 邮件内容(html模板渲染后的内容)
  * @throws Exception
@@ -172,7 +172,7 @@ function send_email($to, $subject = '', $content = '')
 
 /**
  * 验证输入的邮件地址是否合法
- * @param $user_email 邮箱
+ * @param string $user_email 邮箱
  * @return bool
  */
 function is_email($user_email)
@@ -259,7 +259,7 @@ function array2string($info)
 
 /**
  * 文本域中换行标签输出
- * @param $info 内容
+ * @param mixed $info 内容
  * @return mixed
  */
 function textareaBr($info)
@@ -613,7 +613,7 @@ function getSearchField(string $field)
 
 /**
  * 无限分类-权限
- * @param $cate            栏目
+ * @param array $cate            栏目
  * @param string $lefthtml 分隔符
  * @param int $pid         父ID
  * @param int $lvl         层级
@@ -635,7 +635,7 @@ function tree($cate , $lefthtml = '|— ' , $pid = 0 , $lvl = 0 ){
 
 /**
  * 无限分类-权限
- * @param $cate            栏目
+ * @param mixed $cate      栏目
  * @param string $lefthtml 分隔符
  * @param int $pid         父ID
  * @param int $lvl         层级

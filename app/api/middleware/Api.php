@@ -4,10 +4,10 @@
  * | Api中间件
  * +----------------------------------------------------------------------
  *                      .::::.
- *                    .::::::::.            | AUTHOR: siyu
- *                    :::::::::::           | EMAIL: 407593529@qq.com
- *                 ..:::::::::::'           | QQ: 407593529
- *             '::::::::::::'               | DATETIME: 2019/07/18
+ *                    .::::::::.             
+ *                    :::::::::::            
+ *                 ..:::::::::::'            
+ *             '::::::::::::'                
  *                .::::::::::
  *           '::::::::::::::..
  *                ..::::::::::::.
@@ -35,7 +35,7 @@ class Api
 {
     public function handle($request, \Closure $next)
     {
-        $token = Request::header('token');
+        $token = Request::header('authorization');
         if ($token) {
             if (count(explode('.', $token)) <> 3) {
                 $this->result([], 0, 'token格式错误');
