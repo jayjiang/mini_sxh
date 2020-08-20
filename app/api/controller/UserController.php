@@ -31,7 +31,7 @@ use app\common\model\Users;
 use think\facade\Db;
 use think\facade\Request;
 
-class User extends Base
+class UserController extends Base
 {
     /**
      * 控制器中间件 [登录、注册 不需要鉴权]

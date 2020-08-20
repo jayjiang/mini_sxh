@@ -120,7 +120,7 @@ function changefield($info, $moduleId)
  * @param string $subject 邮件标题
  * @param string $content 邮件内容(html模板渲染后的内容)
  * @throws Exception
- * @throws phpmailerException
+ * @throws  Exception
  */
 function send_email($to, $subject = '', $content = '')
 {
@@ -191,7 +191,7 @@ function is_email($user_email)
 
 /**
  * 验证输入的手机号码是否合法
- * @param $mobile_phone 手机号
+ * @param string $mobile_phone 手机号
  * @return bool
  */
 function is_mobile_phone($mobile_phone)
@@ -205,7 +205,7 @@ function is_mobile_phone($mobile_phone)
 
 /**
  * 过滤数组元素前后空格 (支持多维数组)
- * @param $array 要过滤的数组
+ * @param array $array 要过滤的数组
  * @return array|string
  */
 function trim_array_element($array)
@@ -655,3 +655,9 @@ function tree_three($cate , $lefthtml = '|— ' , $pid = 0 , $lvl = 0 ){
     }
     return $arr;
 }
+
+
+function encrypt($str){
+    
+}
+

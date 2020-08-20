@@ -20,10 +20,10 @@ class JwtAuth
     private $expTime = 3600;
 
     // claim iss
-    private $iss = 'api.siyucms.com';
+    private $iss = 'api.sxh.com';
 
     // claim aud
-    private $aud = 'siyucms_app';
+    private $aud = 'sxh_app';
 
     // claim uid
     private $uid;
@@ -89,13 +89,13 @@ class JwtAuth
     {
         $time = time();
         $this->token = (new Builder())->setHeader('alg', 'HS256')
-            ->setIssuer($this->iss)
-            ->setAudience($this->aud)
-            ->setIssuedAt($time)
-            ->setExpiration($time + $this->expTime)
-            ->set('uid', $this->uid)
-            ->sign(new Sha256(), $this->secrect)
-            ->getToken();
+             ->setIssuer($this->iss)
+             ->setAudience($this->aud)
+             ->setIssuedAt($time)
+             ->setExpiration($time + $this->expTime)
+             ->set('uid', $this->uid)
+             ->sign(new Sha256(), $this->secrect)
+             ->getToken();
 
         return $this;
     }
