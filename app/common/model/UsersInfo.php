@@ -5,5 +5,6 @@ use app\admin\model\Base;
 
 class UsersInfo extends Base
 {
+    
 }
 
