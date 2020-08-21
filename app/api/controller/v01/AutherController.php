@@ -26,6 +26,7 @@ class AutherController  extends Base{
      // $uid= 
       $jwtAuth =  JwtAuth::getInstance();
       $token = $jwtAuth->encode()->getToken();
+      dump($token);
     }
     
     /**

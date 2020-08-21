@@ -1485,3 +1485,51 @@ CREATE TABLE `tp_users_type` (
 -- ----------------------------
 INSERT INTO `tp_users_type` VALUES ('1', '1541405155', '1541405155', '普通会员', '普通会员', '1', '1');
 INSERT INTO `tp_users_type` VALUES ('2', '1541405155', '1541405155', 'VIP会员', 'VIP会员', '2', '1');
+
+DROP TABLE IF EXISTS `tp_users_accept`;
+CREATE TABLE `tp_users_accept` (
+  `id` int(11) unsigned NOT NULL  AUTO_INCREMENT,
+  `user_id` int(11) unsigned NOT NULL DEFAULT 0 ,
+  `total_free` int(11) unsigned NOT NULL DEFAULT 0,
+  `status`  tinyint(2)  unsigned NOT NULL DEFAULT 0 COMMENT '状态0未匹配 1已匹配完 2未完全匹配',
+  `order_status`  tinyint(2) unsigned NOT NULL DEFAULT 0 COMMENT '0未完成 1已完成',
+  `create_time` int(11) NOT NULL DEFAULT 0 ,
+  `update_time` int(11) NOT NULL DEFAULT 0 ,
+   PRIMARY KEY (`id`)
+) ENGINE=innodb AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='接受资助';
+
+DROP TABLE IF EXISTS `tp_users_provide`;
+CREATE TABLE `tp_users_provide`(
+  `id` int(11) unsigned NOT NULL  AUTO_INCREMENT,
+  `user_id` int(11) unsigned NOT NULL DEFAULT 0 ,
+  `total_free` int(11) unsigned NOT NULL DEFAULT 0,
+  `status`  tinyint(2)  unsigned NOT NULL DEFAULT 0 COMMENT '状态0未匹配 1已匹配完 2未完全匹配',
+  `order_status`  tinyint(2) unsigned NOT NULL DEFAULT 0 COMMENT '0未完成 1已完成',
+  `create_time` int(11) NOT NULL DEFAULT 0,
+  `update_time` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+)ENGINE=innodb AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='提供资助';
+
+DROP TABLE IF EXISTS `tp_user_match_order`;
+CREATE TABLE `tp_user_match_order`(
+   `id` int(11) unsigned NOT NULL  AUTO_INCREMENT,
+   `provide_id` unsigned NOT NULL DEFAULT 0 COMMENT '提供资助ID',
+   `accept_id`  unsigned NOT NULL DEFAULT 0 COMMENT '接受资助ID',
+   `remit_img`  char(200) not null default '' COMMENT '打款凭证图片',
+   `status`      tinyint(2) unsigned NOT NULL DEFAULT 0 COMMENT '0刚匹配 1资助方已打款未确认 2接助方确认打款完成',
+   `remit_time`  int(11) unsigned NOT NULL DEFAULT 0 COMMENT '打款时间',
+   `affirm_time` int(11) unsigned NOT NULL DEFAULT 0 COMMENT '确认打款打款时间',
+   `create_time` int(11) NOT NULL DEFAULT 0 ,
+   `update_time` int(11) NOT NULL DEFAULT 0 ,
+   PRIMARY KEY (`id`)
+)ENGINE=innodb AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='匹配表';
+
+DROP TABLE IF EXISTS `tp_users_info`;
+CREATE TABLE `tp_users_info`(
+`user_id` int(11) unsigned NOT NULL  DEFAULT 0,
+`identity_card` char(100) NOT NULL DEFAULT '' COMMENT '身份证',
+`card_img` char(200) NOT NULL DEFAULT '' COMMENT '身份证正面',
+`card_img1` char(200) NOT NULL DEFAULT '' COMMENT '身份证反面',
+PRIMARY KEY (`id`)
+)ENGINE=innodb AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='用户信息表';
+
