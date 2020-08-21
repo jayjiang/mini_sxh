@@ -656,8 +656,22 @@ function tree_three($cate , $lefthtml = '|— ' , $pid = 0 , $lvl = 0 ){
     return $arr;
 }
 
+function is_phone($phone){
+    $telRegex = "^((13[0-9])|(14[5,7,9])|(15[^4])|(18[0-9])|(17[0,1,3,5,6,7,8]))\\d{8}$";
+    $len = strlen($phone);
+    if($len != 11){
+        return false;
+    }
+    if(preg_match($telRegex,$phone)){
+        return true;
+    }else{
+        return false;
+    }
+}
 
-function encrypt($str){
-    
+
+function encrypt_password($str,$token=''){
+    $key = config('app.hash_key');
+    return md5($str.$token.$key);
 }
 

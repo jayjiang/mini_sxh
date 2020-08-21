@@ -74,5 +74,9 @@ class Users extends Base
         return MakeBuilder::changeTableData($list, 'Users');
     }
     
+    public static function register($data){
+        return self::create($data);
+    }
+    
 
 }
