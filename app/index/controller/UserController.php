@@ -29,7 +29,7 @@ use think\facade\Request;
 use think\facade\Session;
 use think\facade\View;
 
-class User extends Base
+class UserController extends Base
 {
     // 用户ID
     protected $userId;

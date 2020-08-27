@@ -30,7 +30,7 @@ use think\facade\Db;
 use think\facade\Request;
 use think\facade\View;
 
-class Index extends Base
+class IndexController extends Base
 {
     // 首页
     public function index()

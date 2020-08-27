@@ -34,7 +34,7 @@ use think\facade\Db;
 use think\facade\Request;
 use think\facade\View;
 
-class Error extends Base
+class ErrorController extends Base
 {
     protected $moduleId;  // 当前模型ID
     protected $tableName; // 当前模型对应的数据表
