@@ -28,6 +28,7 @@ namespace app\index\controller;
 use think\facade\Request;
 use think\facade\Session;
 use think\facade\View;
+use app\common\model\UsersInfo;
 
 class UserController extends Base
 {
@@ -56,12 +57,16 @@ class UserController extends Base
             return redirect('login');
         }
         $user = \app\common\facade\User::getUser($this->userId);
+        $userInfo = UsersInfo::where('user_id',$this->userId)->find();
         $view = [
             'user' => $user,
+            'user_info' => $userInfo,
         ];
         View::assign($view);
         return View::fetch();
     }
+    
+    
 
     // 登录
     public function login(){
@@ -101,14 +106,35 @@ class UserController extends Base
             }
         } else {
             $user = \app\common\facade\User::getUser($this->userId);
+            $userInfo = UsersInfo::where('user_id',$this->userId)->find();
             $view = [
                 'user'=>$user,
+                'user_info' => $userInfo
             ];
             View::assign($view);
             return View::fetch();
         }
 
     }
+    
+    
+    public function setInfo(){
+        if (!Session::has('user.id')) {
+            return redirect('login');
+        }
+        if(request()->isPost()){
+            
+            
+        }else {
+            $user_info = UsersInfo::where('user_id',$this->userId)->find();
+            $view = [
+                'user_info' => $user_info,
+            ];
+            View::assign($view);
+            return View::fetch();
+        }
+    }
+    
 
     // 退出
     public function logout(){

@@ -51,10 +51,10 @@ class IndexController extends Base
             'description' => $this->system['des'],   // seo信息
         ];
 
-        $template = $this->template . 'index.html';
-        //var_dump($view);
+        //$template = $this->template . 'index.html';
+        //var_dump($template);
         View::assign($view);
-        return View::fetch($template);
+        return View::fetch();
     }
 
     // 搜索
@@ -74,9 +74,9 @@ class IndexController extends Base
             'description' => $this->system['des'],   //seo信息
         ];
 
-        $template = $this->template.'search.html';
+        //$template = $this->template.'search.html';
         View::assign($view);
-        return View::fetch($template);
+        return View::fetch();
     }
 
     // 标签
@@ -96,9 +96,9 @@ class IndexController extends Base
             'description' => $this->system['des'],
         ];
 
-        $template = $this->template . 'tag.html';
+        //$template = $this->template . 'tag.html';
         View::assign($view);
-        return View::fetch($template);
+        return View::fetch();
     }
 
     // 留言表单提交

@@ -30,6 +30,7 @@ use think\App;
 use think\exception\HttpResponseException;
 use think\exception\ValidateException;
 use think\facade\Request;
+use think\facade\View;
 use think\Response;
 use think\Validate;
 
@@ -100,6 +101,18 @@ abstract class Base
             $this->appName.
             '/';
         $this->template       = '.'.$this->public.$this->system['html'].'/';
+        $view = [
+            'cate'       => ['topid' => 0], // 栏目信息
+           // 'search'      => $search,       // 关键字
+            'system'      => $this->system, // 系统信息
+            'public'      => $this->public, // 公共目录
+            'title'       => $this->system['title'] ? $this->system['title'] : $this->system['name'], //seo信息
+            'keywords'    => $this->system['key'],   //seo信息
+            'description' => $this->system['des'],   //seo信息
+        ];
+        
+        //$template = $this->template.'search.html';
+        View::assign($view);
     }
 
     /**

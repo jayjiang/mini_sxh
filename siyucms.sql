@@ -1513,8 +1513,8 @@ CREATE TABLE `tp_users_provide`(
 DROP TABLE IF EXISTS `tp_user_match_order`;
 CREATE TABLE `tp_user_match_order`(
    `id` int(11) unsigned NOT NULL  AUTO_INCREMENT,
-   `provide_id` unsigned NOT NULL DEFAULT 0 COMMENT '提供资助ID',
-   `accept_id`  unsigned NOT NULL DEFAULT 0 COMMENT '接受资助ID',
+   `provide_id` int(11) unsigned NOT NULL DEFAULT 0 COMMENT '提供资助ID',
+   `accept_id`  int(11) unsigned NOT NULL DEFAULT 0 COMMENT '接受资助ID',
    `remit_img`  char(200) not null default '' COMMENT '打款凭证图片',
    `status`      tinyint(2) unsigned NOT NULL DEFAULT 0 COMMENT '0刚匹配 1资助方已打款未确认 2接助方确认打款完成',
    `remit_time`  int(11) unsigned NOT NULL DEFAULT 0 COMMENT '打款时间',
@@ -1530,7 +1530,7 @@ CREATE TABLE `tp_users_info`(
 `identity_card` char(100) NOT NULL DEFAULT '' COMMENT '身份证',
 `card_img` char(200) NOT NULL DEFAULT '' COMMENT '身份证正面',
 `card_img1` char(200) NOT NULL DEFAULT '' COMMENT '身份证反面',
-PRIMARY KEY (`id`)
+PRIMARY KEY (`user_id`)
 )ENGINE=innodb AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='用户信息表';
 
 DROP TABLE IF EXISTS `tp_kpl_quarter`;
