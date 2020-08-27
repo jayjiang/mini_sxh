@@ -4,10 +4,10 @@
  * | 首页控制器
  * +----------------------------------------------------------------------
  *                      .::::.
- *                    .::::::::.            | AUTHOR: siyu
- *                    :::::::::::           | EMAIL: 407593529@qq.com
- *                 ..:::::::::::'           | QQ: 407593529
- *             '::::::::::::'               | DATETIME: 2019/04/12
+ *                    .::::::::.             
+ *                    :::::::::::            
+ *                 ..:::::::::::'            
+ *             '::::::::::::'                
  *                .::::::::::
  *           '::::::::::::::..
  *                ..::::::::::::.
@@ -52,6 +52,7 @@ class Index extends Base
         ];
 
         $template = $this->template . 'index.html';
+        //var_dump($view);
         View::assign($view);
         return View::fetch($template);
     }
@@ -197,6 +198,7 @@ class Index extends Base
     public function captcha(){
         return Captcha::create();
     }
+    
 
     // 邮件发送
     private function trySend($email,$title,$content){

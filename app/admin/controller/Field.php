@@ -657,8 +657,8 @@ class Field extends Base
 
     /**
      * 判断表中是否存在所选字段
-     * @param $table 表全称
-     * @param $field 字段名称
+     * @param mixed $table 表全称
+     * @param mixed $field 字段名称
      * @return mixed
      */
     protected function _iset_field($table, $field)

@@ -86,9 +86,9 @@ class Cms
 
     /**
      * 获取内容页面TDK
-     * @param $info   内容
-     * @param $cate   栏目
-     * @param $system 系统
+     * @param mixed $info   内容
+     * @param mixed $cate   栏目
+     * @param mixed $system 系统
      * @return array
      */
     public function getInfoTdk($info, $cate, $system)
@@ -102,9 +102,9 @@ class Cms
 
     /**
      * 获取内容页面模版
-     * @param $info      内容
-     * @param $cate      栏目
-     * @param $tableName 表名称
+     * @param mixed $info      内容
+     * @param mixed $cate      栏目
+     * @param mixed $tableName 表名称
      * @return mixed|string
      */
     public function getInfoView($info, $cate, string $tableName)
@@ -115,9 +115,9 @@ class Cms
 
     /**
      * 获取列表页面TDK
-     * @param $info   内容
-     * @param $cate   栏目
-     * @param $system 系统
+     * @param mixed $info   内容
+     * @param mixed $cate   栏目
+     * @param mixed $system 系统
      * @return array
      */
     public function getListTdk($cate, $system)
@@ -131,9 +131,9 @@ class Cms
 
     /**
      * 获取列表页面模版
-     * @param $info      内容
-     * @param $cate      栏目
-     * @param $tableName 表名称
+     * @param mixed $info      内容
+     * @param mixed $cate      栏目
+     * @param mixed $tableName 表名称
      * @return mixed|string
      */
     public function getListView($cate, string $tableName)
@@ -145,8 +145,8 @@ class Cms
 
     /**
      * 判断表中是否存在所选字段
-     * @param $table 表全称
-     * @param $field 字段名称
+     * @param mixed $table 表全称
+     * @param mixed $field 字段名称
      * @return mixed
      */
     private function _iset_field($table, $field)

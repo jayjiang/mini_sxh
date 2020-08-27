@@ -13,7 +13,7 @@ jQuery(document).ready(function($){
 		//clip effect 
 		revealDuration = 600,
 		revealAnimationDelay = 1500;
-	
+	 
 	initHeadline();
 	
 

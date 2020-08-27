@@ -221,7 +221,7 @@ class Module extends Base
 
     /**
      * 删除模块时判断是否已有栏目在应用[兼容多选和单选]
-     * @param $id 模块id
+     * @param  string $id 模块id
      * @return bool false 不可删除，true 可删除
      */
     private function checkCate(string $id)

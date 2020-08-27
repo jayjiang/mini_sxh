@@ -30,9 +30,9 @@ function empty_list($num = 10){
 
 /**
  * 权限设置选中状态
- * @param $cate  栏目
+ * @param mixed $cate  栏目
  * @param int $pid 父ID
- * @param $rules 规则
+ * @param mixed $rules  规则
  * @return array
  */
 function auth($cate , $pid = 0,$rules){
@@ -102,7 +102,7 @@ function dir_list($path, $exts = '', $list= array()) {
 
 /**
  * 补齐目录后的/
- * @param $path 目录
+ * @param mixed $path 目录
  * @return string
  */
 function dir_path($path) {
@@ -113,7 +113,7 @@ function dir_path($path) {
 
 /**
  * 查找文件后缀
- * @param $filename 文件名称
+ * @param string $filename [文件名称]
  * @return string 后缀名称（如：html）
  */
 function fileext($filename) {

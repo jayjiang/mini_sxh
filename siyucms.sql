@@ -1533,3 +1533,40 @@ CREATE TABLE `tp_users_info`(
 PRIMARY KEY (`id`)
 )ENGINE=innodb AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='用户信息表';
 
+DROP TABLE IF EXISTS `tp_kpl_quarter`;
+CREATE TABLE `tp_lpl_quarter` (
+   `id` int(11) unsigned NOT NULL  AUTO_INCREMENT,
+   `name` char(100) NOT NULL DEFAULT '',
+   `status` tinyint(2) NOT NULL DEFAULT 0,
+   `start_time` int(11) NOT NULL DEFAULT 0,
+   `finish_time` int(11) NOT NULL DEFAULT 0,
+   `created_at`  int(11) NOT NULL DEFAULT 0,
+   PRIMARY KEY (`id`)
+)ENGINE=innodb AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='KPL季度表';
+
+DROP TABLE IF EXISTS `tp_kpl_team`;
+CREATE TABLE `tp_kpl_team` (
+	`id` int(11) unsigned NOT NULL  AUTO_INCREMENT,
+	`logo` char(200) NOT NULL DEFAULT 0,
+	`name`  char(100) NOT NULL DEFAULT 0,
+	`orientation` tinyint(2) NOT NULL DEFAULT 0 COMMENT '0东部1西部',
+	`integral`  int(11)   NOT NULL DEFAULT 0 COMMENT '积分',
+	`win`      int(11) not null default 0 comment '赢的次数',
+	`fail`     int(11) not null default 0 comment '输的次数',
+	`status`   tinyint(2) not null default 0 comment '状态',
+	`battles`  int(11) not null default 0 comment '净胜局'，
+	`created_at` int(11) not null default 0 comment '添加时间',
+	PRIMARY KEY (`id`)
+)ENGINE=innodb AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='KPL战队表';
+
+DROP TABLE IF EXISTS `tp_kpl_team_crew`;
+CREATE TABLE `tp_kpl_team_crew` (
+	`id` int(11) unsigned NOT NULL  AUTO_INCREMENT,
+	`name`  char(100) NOT NULL DEFAULT 0,
+	`portrait_url` char(100) not null default '' comment '头像照片',
+	`team_id`  int(11) not null default 0 comment '战队ID',
+	 PRIMARY KEY (`id`)  
+)ENGINE=innodb AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='KPL战队成员表';
+
+
+

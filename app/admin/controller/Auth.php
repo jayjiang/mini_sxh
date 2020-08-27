@@ -25,10 +25,10 @@
  */
 namespace app\admin\controller;
 
-use app\admin\model\Admin;
+use app\common\model\Admin;
 use app\common\model\AuthGroup;
-use app\admin\model\AuthGroupAccess;
-use app\admin\model\AuthRule;
+use app\common\model\AuthGroupAccess;
+use app\common\model\AuthRule;
 
 use think\facade\Config;
 use think\facade\Db;
