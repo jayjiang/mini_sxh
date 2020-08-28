@@ -35,7 +35,7 @@
 </nav>
 <!--main-->
 <div class="container">
-    <div class="row user_center">
+    <div class="row user_center" style="margin-top: 80px;" >
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
                 <li><a href="{:url('index')}">我的主页</a></li>
@@ -45,7 +45,7 @@
         </div>
         <div class="col-sm-9 col-md-10 main">
             <div class="page-header">
-                <h1>基本设置</h1>
+                <h1>审核设置</h1>
             </div>
             <!--选项卡开始-->
             <!-- Nav tabs -->
@@ -60,8 +60,38 @@
                         <div class="form-group dd_input_group">
                             <label class="col-sm-2 col-xs-4 control-label dd_input_l">身份证号</label>
                             <div class="col-sm-4 col-xs-8 dd_input_2">
-                                <input type="text" name="identity_card" class="form-control" value="{$user_info.identity_card|default=''}" >
+                                <input type="text" name="identity_card" class="form-control" 
+                                    value="{$user_info.identity_card|default=''}" >
                             </div>
+                        </div>
+                        
+                        
+                        <div class="form-group dd_input_group">
+                          <label class="col-sm-2 col-xs-4 control-label dd_input_l">签发机关</label>
+                          <div class="col-sm-4 col-xs-8 dd_input_2">
+                             <input type='text' name='authority' class='form-control' value="{$user_info.authority|default=''}" />
+                          </div>
+                        </div>
+                        
+                        <div class="form-group dd_input_group">
+                          <label class="col-sm-2 col-xs-4 control-label dd_input_l">签发机关</label>
+                          <div class="col-sm-4 col-xs-8 dd_input_2">
+                             <input type='text' name='domicile' class='form-control' value="{$user_info.domicile|default=''}" />
+                          </div>
+                        </div>
+                        
+                        <div class="form-group dd_input_group">
+                          <label class="col-sm-2 col-xs-4 control-label dd_input_l">证件有效期起</label>
+                          <div class="col-sm-4 col-xs-8 dd_input_2">
+                             <input type='text' id='certificate_start_time' name='certificate_start_time' class='form-control' value="{$user_info.certificate_start_time|default=''}" />
+                          </div>
+                        </div>
+                        
+                        <div class="form-group dd_input_group">
+                          <label class="col-sm-2 col-xs-4 control-label dd_input_l">证件有效期止</label>
+                          <div class="col-sm-4 col-xs-8 dd_input_2">
+                             <input type='text' id='certificate_over_time'  name='certificate_over_time' class='form-control' value="{$user_info.certificate_over_time|default=''}" />
+                          </div>
                         </div>
                         
                        <div class="frambox">
@@ -98,7 +128,10 @@
 						</div>
 					</div>
 					
-                   <button type="submit" class="btn btn-flat btn-primary ">提 交</button>
+				   	
+					<div class="form-group dd_input_group" style='text-align: center;'>
+                     <button type="submit" class="btn btn-flat btn-primary " style='width: 30%; top: 20px;'>提 交</button>
+                    </div>
                     </form>
                 </div>
                 
@@ -112,6 +145,10 @@
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+  
+<script type="text/javascript" src="{$public}bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="{$public}bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+  
 <script src="{$public}ydui/js/ydui.flexible.js"></script>
 <script src="{$public}ydui/js/ydui.js"></script>
 
@@ -190,6 +227,31 @@ function compress(img){
 		var ndata = canvas.toDataURL("image/jpeg", 0.92);//此为图片base64数据，传至后台或保存数据库/或保存服务器都可以		 
 		return ndata;
   }
+  
+  
+$('#certificate_start_time').datetimepicker({
+    forceParse: 0,//设置为0，时间不会跳转1899，会显示当前时间。
+    language: 'zh-CN',//显示中文
+    format: 'yyyy-mm-dd',//显示格式
+    minView: "month",//设置只显示到月份
+    initialDate: new Date(),//初始化当前日期
+    autoclose: true,//选中自动关闭
+    todayBtn: true//显示今日按钮
+})
+
+$('#certificate_over_time').datetimepicker({
+    forceParse: 0,//设置为0，时间不会跳转1899，会显示当前时间。
+    language: 'zh-CN',//显示中文
+    format: 'yyyy-mm-dd',//显示格式
+    minView: "month",//设置只显示到月份
+    initialDate: new Date(),//初始化当前日期
+    autoclose: true,//选中自动关闭
+    todayBtn: true//显示今日按钮
+})
+
+//$("#certificate_start_time").datetimepicker("setDate", new Date() );  //设置显示默认当天的时间
+  
+  
 </script>
 
 
