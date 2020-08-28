@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{$system.name}</title>
+    <meta name="keywords" content="{$keywords}" />
+    <meta name="description" content="{$description}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="{$public}css/user.css" />
+    
+    <link rel="stylesheet" href="{$public}ydui/css/ydui.css" />
+	<link rel="stylesheet" href="{$public}ydui/css/mystyle.css" />
+	
+	
+
+</head>
+<body>
+<!-- Fixed navbar -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">{$system.name}</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="{:url('index')}">欢迎您：{$user.email}</a></li>
+            <li><a href="{:url('logout')}">退出</a></li>
+        </ul>
+    </div>
+</nav>
+<!--main-->
+<div class="container">
+    <div class="row user_center">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li><a href="{:url('index')}">我的主页</a></li>
+                <li ><a href="{:url('set')}">基本设置</a></li>
+                <li class="active"><a href="{:url('setInfo')}">审核设置</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-md-10 main">
+            <div class="page-header">
+                <h1>基本设置</h1>
+            </div>
+            <!--选项卡开始-->
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">我的资料</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="home">
+                    <form class="form-inline" name="f1" method="post" action=""  enctype="multipart/form-data" >
+                        <div class="form-group dd_input_group">
+                            <label class="col-sm-2 col-xs-4 control-label dd_input_l">身份证号</label>
+                            <div class="col-sm-4 col-xs-8 dd_input_2">
+                                <input type="text" name="identity_card" class="form-control" value="{$user_info.identity_card|default=''}" >
+                            </div>
+                        </div>
+                        
+                       <div class="frambox">
+						<h2>上传证件信息</h2>
+						<div class="font_box">
+							<div class="m-grids-2">
+								<a href="javascript:sfzzmSc();" class="grids-item">
+									<div id="sfzzmImg" class="grids-icon">
+										<img src="{$public}ydui/images/shenfenzheng-a.png">
+									</div>
+									<div class="grids-txt">
+										<span>上传证件正面</span>
+									</div>
+								</a> <input style="display: none" id="sfzzm" type="file" name='file[]'
+									onchange="javascript:showpic(this,'sfzzmImg');" accept="image/*" multiple />
+								<a href="javascript:sfzfmSc();" class="grids-item">
+									<div id="sfzfmImg" class="grids-icon">
+										<img src="{$public}ydui/images/shenfenz-b.png">
+									</div>
+									<div class="grids-txt">
+										<span>上传证件反面</span>
+									</div>
+								</a> <input style="display: none" id="sfzfm" type="file"  name='file[]'
+									onchange="javascript:showpic(this,'sfzfmImg');" accept="image/*" multiple />
+							</div>
+						</div>
+					</div>
+					
+					<!-- 点击图片放大区 -->
+					<div id="outerdiv"
+						style="position: fixed; top: 0; left: 0; background: rgba(0, 0, 0, 0.7); z-index: 2; width: 100%; height: 100%; display: none;">
+						<div id="innerdiv" style="position: absolute;">
+							<img id="bigimg" style="border: 5px solid #fff;" src="" />
+						</div>
+					</div>
+					
+                   <button type="submit" class="btn btn-flat btn-primary ">提 交</button>
+                    </form>
+                </div>
+                
+            </div>
+            <!--选项卡结束-->
+        </div>
+    </div>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+<script src="{$public}ydui/js/ydui.flexible.js"></script>
+<script src="{$public}ydui/js/ydui.js"></script>
+
+<script type="text/javascript">
+	! function($) {
+		$("#hd").hide();
+	}(jQuery);
+	
+	//点击触发h5File类型上传，身份证正面
+	function sfzzmSc(){
+		$("#sfzzm").click();
+	}
+	//点击触发h5File类型上传，身份证反面
+    function sfzfmSc(){
+       $("#sfzfm").click();
+    }
+
+	function showBigPic(src){ //点击图片放大,（目前图片包含于上传点集中，点击不到图片，所以不起效果，需要放大时自行修改html代码即可）
+		imgShow("#outerdiv", "#innerdiv", "#bigimg", src.src);
+	}
+	
+	function showpic(obj,id){  //图片展示
+		//var imgs = document.getElementById("sfzzmImg").getElementsByTagName("img");
+		 for(var i = 0, file; file = obj.files[i]; i++){
+				if(i>0){
+					break;
+				}
+				var reader = new FileReader();
+				//图片读取展示
+				reader.onload = function(e){
+					console.log(e);				
+					var htmlimg='<img style="margin-left:2px;" id="'+e.timeStamp+'" class="min"  src="'+e.target.result+'" onclick="showBigPic(this)"/>';
+					$("#"+id).html(htmlimg);
+				}
+				reader.readAsDataURL(file);
+         }
+	}
+
+
+var canvas = document.createElement('canvas');
+var ctx = canvas.getContext('2d');
+
+//上传信息时图片处理
+function compress(img){
+		var initSize = img.src.length;
+		// 图片原始尺寸
+		var originWidth = img.width;
+		var originHeight = img.height;
+		// 最大尺寸限制，可通过国设置宽高来实现图片压缩程度
+		var maxWidth = 800,
+		    maxHeight = 800;
+		// 目标尺寸
+		var targetWidth = originWidth,
+		    targetHeight = originHeight;
+		// 图片尺寸超过400x400的限制
+		if(originWidth > maxWidth || originHeight > maxHeight){
+			if(originWidth / originHeight > maxWidth / maxHeight){
+ 				// 更宽，按照宽度限定尺寸
+                targetWidth = maxWidth;
+                targetHeight = Math.round(maxWidth * (originHeight/originWidth)); 
+            } else {
+		        targetHeight = maxHeight;
+		        targetWidth = Math.round(maxHeight * (originWidth / originHeight));
+		    }
+		}else{
+			targetWidth=400;
+			targetHeight=400;
+		}
+		canvas.width = targetWidth;
+		canvas.height = targetHeight;
+		// 清除画布
+		ctx.clearRect(0, 0, targetWidth, targetHeight);
+		// 图片压缩
+		ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
+		//进行最小压缩
+		var ndata = canvas.toDataURL("image/jpeg", 0.92);//此为图片base64数据，传至后台或保存数据库/或保存服务器都可以		 
+		return ndata;
+  }
+</script>
+
+
+</body>
+</html>

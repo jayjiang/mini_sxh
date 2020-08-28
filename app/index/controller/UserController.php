@@ -123,12 +123,14 @@ class UserController extends Base
             return redirect('login');
         }
         if(request()->isPost()){
-            
+            //var_dump($_FILES);
             
         }else {
+            $user = \app\common\facade\User::getUser($this->userId);
             $user_info = UsersInfo::where('user_id',$this->userId)->find();
             $view = [
                 'user_info' => $user_info,
+                'user'  => $user
             ];
             View::assign($view);
             return View::fetch();

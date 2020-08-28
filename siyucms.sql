@@ -1530,6 +1530,10 @@ CREATE TABLE `tp_users_info`(
 `identity_card` char(100) NOT NULL DEFAULT '' COMMENT '身份证',
 `card_img` char(200) NOT NULL DEFAULT '' COMMENT '身份证正面',
 `card_img1` char(200) NOT NULL DEFAULT '' COMMENT '身份证反面',
+`certificate_start_time`  datetime  comment '证件有效期起',
+`certificate_over_time`  datetime   comment '证件有效期止',
+`authority`   char(200) not null  default '' comment '签发机关',
+`domicile`    char(200) not null default '' comment '户口所在地',
 PRIMARY KEY (`user_id`)
 )ENGINE=innodb AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='用户信息表';
 
