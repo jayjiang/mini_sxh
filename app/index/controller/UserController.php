@@ -32,6 +32,14 @@ use app\common\model\UsersInfo;
 
 class UserController extends Base
 {
+    /**
+     * 控制器中间件
+     * @var array
+     */
+    protected $middleware = [
+        'app\index\middleware\AutherMiddleware'  =>  ['except' => ['index','login','register']],
+    ];
+    
     // 用户ID
     protected $userId;
 

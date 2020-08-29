@@ -70,7 +70,9 @@ abstract class Base
      * 控制器中间件
      * @var array
      */
-    protected $middleware = [];
+    protected $middleware = [
+        'app\index\middleware\AutherMiddleware'  =>  ['except' => []],
+    ];
 
     /**
      * 构造方法

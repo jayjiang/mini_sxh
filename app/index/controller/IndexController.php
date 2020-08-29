@@ -32,6 +32,10 @@ use think\facade\View;
 
 class IndexController extends Base
 {
+    protected $middleware = [
+        'app\index\middleware\AutherMiddleware'  =>  ['except' => ['index','login','register']],
+    ];
+    
     // 首页
     public function index()
     {
